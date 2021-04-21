@@ -1,0 +1,40 @@
+.is-pc.isMdBox
+    body
+        position relative
+        background: #275984
+        width: 100%
+        height: 100%
+
+    .iframeMdBox
+        outline: none;
+        border: none
+        width: 400px
+        height: auto //(@width * 1334 / 750)
+        // border: red 1px solid
+        position: absolute
+        top 50%
+        left 50%
+        transform: translate(-50%, -50%)
+        z-index 2
+        background-image: url(pc.png)
+        background-position: center center
+        background-repeat: no-repeat
+        background-size: contain
+        box-shadow: 0 10px 10px rgba(#000, 0.3)
+        border-radius: 6px
+        overflow: hidden
+
+    .footer
+        color: #fff
+        position: absolute
+        bottom: 0
+        line-height: 24px
+        text-align: center
+        width: 100%
+        font-size: 18px
+        padding-bottom: 20px
+        z-index 1
+
+        a
+            color: #fff
+

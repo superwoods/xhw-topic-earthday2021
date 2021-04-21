@@ -1,0 +1,83 @@
+jpPlayBtnbtnWidth = 7vw
+
+.jp-playBtn 
+    position: fixed
+    z-index: 10
+    width: jpPlayBtnbtnWidth
+    height: jpPlayBtnbtnWidth
+    top: 10px
+    right: 10px
+    overflow: hidden
+    outline: 0
+    // border: 1px red solid
+
+.jp-playBtn .icon-music
+    position: absolute
+    z-index: 10
+    width: jpPlayBtnbtnWidth
+    height: jpPlayBtnbtnWidth
+    top: 0
+    left: 0
+    border: none
+    outline: 0
+    background-image: url(bgm.png)
+    background-repeat: no-repeat
+    background-size: jpPlayBtnbtnWidth jpPlayBtnbtnWidth
+    background-position: center center
+    text-indent: -888px
+
+.jp-state-playing .jp-playBtn .icon-music
+    animation: 1s linear infinite rock
+
+@-moz-keyframes rock
+    0%
+        transform: rotate(0)
+    50%
+        transform: rotate(30deg)
+    100%
+        transform: rotate(0)
+    
+@-webkit-keyframes rock
+    0%
+        transform: rotate(0)
+    50%
+        transform: rotate(30deg)
+    100%
+        transform: rotate(0)
+    
+@-o-keyframes rock
+    0%
+        transform: rotate(0)
+    50%
+        transform: rotate(30deg)
+    100%
+        transform: rotate(0)
+    
+@keyframes rock
+    0%
+        transform: rotate(0)
+    50%
+        transform: rotate(30deg)
+    100%
+        transform: rotate(0)
+
+
+// .is-pc
+//     jpPlayBtnbtnWidth = 30px
+//     .jp-playBtn 
+//         // position: fixed
+//         // z-index: 10
+//         width: jpPlayBtnbtnWidth
+//         height: jpPlayBtnbtnWidth
+//         // top: 10px
+//         // right: 10px
+//         // overflow: hidden
+//         // outline: 0
+//         // border: 1px red solid
+
+//     .jp-playBtn .icon-music
+//         // position: absolute
+//         // z-index: 10
+//         width: jpPlayBtnbtnWidth
+//         height: jpPlayBtnbtnWidth
+//         background-size: jpPlayBtnbtnWidth jpPlayBtnbtnWidth

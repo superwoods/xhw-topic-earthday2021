@@ -1,0 +1,62 @@
+
+- const title = '2021 Earth Day' + '_新华网'
+
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='chrome')
+        meta(name='renderer', content='webkit')
+
+        title= title
+
+        meta(name='description', content= title)
+        meta(name='apple-mobile-web-app-title', content= title)
+
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+
+
+        script(src="./bundle/browser.min.js")
+
+        //- link(rel='stylesheet', href='./bundle/swiper.min.css')
+        //- link(rel='stylesheet', href='./bundle/animate.min.css')
+        link(rel='stylesheet', href='./bundle/index.css')
+
+
+    body
+        //- <div class="swiper-container box jp-audio">
+        //-     <div class="swiper-wrapper data">
+        //-         .loading 正在加载...
+        //-     </div>
+            
+        //-     <div class="jp-play jp-playBtn" role="button" tabindex="0">
+        //-         <div class="icon-music">play</div>
+        //-         <audio style="opacity: 0;" id="music-audio" loop="" preload="">
+        //-             <source src="http://www.xinhuanet.com/talking/zt2021/musicqingming.mp3">
+        //-         </audio>
+        //-     </div>
+            
+        //-     <div class="swiper-pagination"></div>
+        //- </div>
+        .box
+            .cover
+
+            .tip1
+            .bgPos1
+                canvas#canvas
+            .tip2
+        
+
+                
+        script(src='./bundle/jq.js')
+        //- script(src='./bundle/swiper.min.js')
+        //- script(src='./bundle/swiper.animate.min.js')
+        //- script(src='./bundle/TweenMax.min.js')
+        script(src='./bundle/jquery.gsap.min.js')
+        //- script(src='./bundle/html2canvas.js')
+        //- script(src='./bundle/canvas2image.js')
+        script(src='./bundle/index.js')
+
+        <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+
