@@ -1,8 +1,8 @@
 {
     "dev_url": "src/",
-    "name": "xhw-topic-qingming",
+    "name": "xhw-topic-earthday2021",
     "version": "0.1.10",
-    "description": "xhw-topic-qingming",
-    "url": "http://www.xinhuanet.com/talking/2021qingming/",
-    "github": "https://github.com/superwoods/xhw-topic-qingming"
+    "description": "xhw-topic-earthday2021",
+    "url": "http://www.xinhuanet.com/talking/earthday2021/",
+    "github": "https://github.com/superwoods/xhw-topic-earthday2021"
 }
