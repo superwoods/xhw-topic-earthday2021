@@ -63,6 +63,78 @@ a {
 a:hover {
   color: #ffa500 !important;
 }
+.jp-playBtn {
+  position: fixed;
+  z-index: 10;
+  width: 7vw;
+  height: 7vw;
+  top: 10px;
+  right: 10px;
+  overflow: hidden;
+  outline: 0;
+}
+.jp-playBtn .icon-music {
+  position: absolute;
+  z-index: 10;
+  width: 7vw;
+  height: 7vw;
+  top: 0;
+  left: 0;
+  border: none;
+  outline: 0;
+  background-image: url("bgm.png");
+  background-repeat: no-repeat;
+  background-size: 7vw 7vw;
+  background-position: center center;
+  text-indent: -888px;
+}
+.jp-state-playing .jp-playBtn .icon-music {
+  animation: rock 1s linear infinite;
+}
+@-moz-keyframes rock {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+@-webkit-keyframes rock {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+@-o-keyframes rock {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+@keyframes rock {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
 .cover {
   background-color: #dcf9df;
   background-position: center 0;

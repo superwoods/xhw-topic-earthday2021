@@ -10,7 +10,11 @@ $(() => {
                 eraser = new Eraser(canvas, 'bundle/dirty/high5_0' + (e + 1) + '.jpg', $('.bgPos' + e), $('#canvas' + e));
             eraser.init();
         });
+
+        @import './bgm.js'
     }
+
+
 });
 
 @import './wxshare.js'

@@ -140,11 +140,41 @@ $(function () {
     if (isPc) {
         $('html').addClass('isMdBox');
     } else {
+        var playAudio = function playAudio() {
+            audios.play();
+            $('.jp-audio').addClass('jp-state-playing');
+        };
+
+        var playPause = function playPause() {
+            audios.pause();
+            $('.jp-audio').removeClass('jp-state-playing'); //jp-state-looped 
+        };
+
         [1, 2, 3, 4].map(function (e, i) {
             console.log(e, i);
             var canvas = document.querySelector('#canvas' + e),
                 eraser = new Eraser(canvas, 'bundle/dirty/high5_0' + (e + 1) + '.jpg', $('.bgPos' + e), $('#canvas' + e));
             eraser.init();
+        });
+
+        var audios = $('#music-audio')['0'];
+
+        if (isDev == false) {
+            playAudio();
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                playAudio();
+            }, false);
+        }
+
+        $('.icon-music').on('click', function () {
+            if ($('.jp-audio').hasClass('jp-state-playing')) {
+                playPause();
+                document.addEventListener("WeixinJSBridgeReady", function () {
+                    playPause();
+                }, false);
+            } else {
+                playAudio();
+            }
         });
     }
 });
