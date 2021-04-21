@@ -15,7 +15,11 @@ body
     // background-image: url(itemBg.png)
 
 
-
+canvas
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    display: block;
 
 
 // .fool
@@ -96,11 +100,23 @@ body
     height: 680px
     // border: 1px red solid
 
-// .bgPos
-//     // position relative
-//     canvas
-//         position relative
-//         z-index 2
+.bgPos
+    position relative
+    canvas
+        position relative
+        z-index 2
+
+.is-ca
+    position: static
+
+.handBox
+    pointer-events: none
+    width 100%
+    height: 100%
+    position absolute
+    top 0
+    left 0
+    z-index 4
 
 .hand3
     position: absolute
@@ -111,12 +127,13 @@ body
     background-size: 180px auto
     background-image: url(hand3.png)
     z-index 3
-    transform: rotate(90deg)
+    transform: translate(-50%, -50%) rotate(90deg) 
     // border: red 1px solid
     pointer-events: none
-    top: 400px
-    left: 35px
-    
+    top: 50%
+    left: 50%
+
+
 
 
 // // .swiper-pagination

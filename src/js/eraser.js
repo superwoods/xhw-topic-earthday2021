@@ -56,8 +56,11 @@
         },
         onTapStart: function (ev) {
             console.log('onTapStart!!');
-            $('.hand3').fadeOut(2000, function () {
-                $('.hand3').remove();
+            var _this = this;
+
+            this.$target.find('.handBox').fadeOut(2000, function () {
+                $(this).remove();
+                _this.$target.addClass('is-ca');
             });
 
             ev.preventDefault();
