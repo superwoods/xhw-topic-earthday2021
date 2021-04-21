@@ -1,8 +1,8 @@
-function wxShareFn(MAIT_title, sharesumTxt) {
+function wxShareFn() {
     var wxShareHref = window.location.href;
     // cb 是  http://api.home.news.cn/wx/jsapi.do?callback=cb&mpId=375&url=http%3A%2F%2Fwww.xiongan.gov.cn%2F2018-06%2F02%2Fc_129885537.htm 的回调函数, 需要到全局
 
-    window.cb2021Qingming = function cb2021Qingming(data) {
+    window.cbEarthDay2021 = function cbEarthDay2021(data) {
         // if (data.code !== 200) console.log("shibai");
         // console.log(data);
         wx.config({
@@ -25,9 +25,9 @@ function wxShareFn(MAIT_title, sharesumTxt) {
                 // }
             });
 
-            var shareTit = '山河无恙 英雄不朽'; // MAIT_title || $('title').text();
-            var sharesum = '苍山巍巍 江水泱泱 英烈意志 永续传扬'; // sharesumTxt || 
-            var shareImg = 'http://www.xinhuanet.com/talking/2021qingming/bundle/wxshare.jpg';
+            var shareTit = '世界地球日'; // MAIT_title || $('title').text();
+            var sharesum = '让我们一起守护地球'; // sharesumTxt || 
+            var shareImg = 'http://www.xinhuanet.com/talking/earthday2021/bundle/wxshare.jpg';
             // const shareUrl = wxShareHref;
 
             // 2. 分享接口
@@ -82,7 +82,7 @@ function wxShareFn(MAIT_title, sharesumTxt) {
     tag.src = function () {
         var wxShareMpId = 356; //375 = xiongan.gov.cn
         var url = wxShareHref.substring(0, wxShareHref.indexOf('#') < 0 ? undefined : wxShareHref.indexOf('#'));
-        var weShareCbUrl = 'http://api.home.news.cn/wx/jsapi.do?callback=cb2021Qingming&mpId=' + wxShareMpId + '&url=' + encodeURIComponent(url);
+        var weShareCbUrl = 'http://api.home.news.cn/wx/jsapi.do?callback=cbEarthDay2021&mpId=' + wxShareMpId + '&url=' + encodeURIComponent(url);
 
         console.log('weShareCbUrl:', weShareCbUrl);
 
@@ -92,3 +92,4 @@ function wxShareFn(MAIT_title, sharesumTxt) {
     document.querySelector("body").appendChild(tag);
 }
 
+wxShareFn();

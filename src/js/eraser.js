@@ -6,13 +6,15 @@
         tapend = hastouch ? 'touchend' : 'mouseup',
         x1, y1, x2, y2;
 
-    function Eraser(canvas, imgUrl) {
+    function Eraser(canvas, imgUrl, $target, $canvas) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.imgUrl = imgUrl;
         this.timer = null;
         this.lineWidth = 30;
         this.gap = 10;
+        this.$target = $target;
+        this.$canvas = $canvas;
     }
 
     exports.Eraser = Eraser;
@@ -37,7 +39,7 @@
                 _this.ctx.drawImage(this, 0, 0, _this.canvasWidth, _this.canvasHeight);
                 _this.initEvent();
 
-                $('.bgPos').height(_this.canvasHeight).addClass('bg');
+                _this.$target.height(_this.canvasHeight).addClass('addBg');
             };
         },
         initEvent: function () {
@@ -54,6 +56,9 @@
         },
         onTapStart: function (ev) {
             console.log('onTapStart!!');
+            $('.hand3').fadeOut(2000, function () {
+                $('.hand3').remove();
+            });
 
             ev.preventDefault();
             x1 = hastouch ? ev.targetTouches[0].pageX - this.canvas.offsetLeft : ev.pageX - this.canvas.offsetLeft;
@@ -105,13 +110,11 @@
                 }
             }
 
-            if (count / (imgData.width * imgData.height / (this.gap * this.gap)) < 0.6) {
+            if (count / (imgData.width * imgData.height / (this.gap * this.gap)) < 0.9) {
                 setTimeout(function () {
                     _this.removeEvent();
                     // document.body.removeChild(_this.canvas);
-
-                    $('#canvas').fadeOut(2000);
-
+                    _this.$canvas.fadeOut(2000);
                     _this.canvas = null;
                 }, 40);
             } else {

@@ -11,13 +11,15 @@
         x2,
         y2;
 
-    function Eraser(canvas, imgUrl) {
+    function Eraser(canvas, imgUrl, $target, $canvas) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.imgUrl = imgUrl;
         this.timer = null;
         this.lineWidth = 30;
         this.gap = 10;
+        this.$target = $target;
+        this.$canvas = $canvas;
     }
 
     exports.Eraser = Eraser;
@@ -41,7 +43,7 @@
                 _this.ctx.drawImage(this, 0, 0, _this.canvasWidth, _this.canvasHeight);
                 _this.initEvent();
 
-                $('.bgPos').height(_this.canvasHeight).addClass('bg');
+                _this.$target.height(_this.canvasHeight).addClass('addBg');
             };
         },
         initEvent: function initEvent() {
@@ -58,6 +60,9 @@
         },
         onTapStart: function onTapStart(ev) {
             console.log('onTapStart!!');
+            $('.hand3').fadeOut(2000, function () {
+                $('.hand3').remove();
+            });
 
             ev.preventDefault();
             x1 = hastouch ? ev.targetTouches[0].pageX - this.canvas.offsetLeft : ev.pageX - this.canvas.offsetLeft;
@@ -109,13 +114,11 @@
                 }
             }
 
-            if (count / (imgData.width * imgData.height / (this.gap * this.gap)) < 0.6) {
+            if (count / (imgData.width * imgData.height / (this.gap * this.gap)) < 0.9) {
                 setTimeout(function () {
                     _this.removeEvent();
                     // document.body.removeChild(_this.canvas);
-
-                    $('#canvas').fadeOut(2000);
-
+                    _this.$canvas.fadeOut(2000);
                     _this.canvas = null;
                 }, 40);
             } else {
@@ -131,10 +134,110 @@
 })(window);
 
 $(function () {
-
-    window.addEventListener('load', function () {
-        var canvas = document.querySelector('#canvas'),
-            eraser = new Eraser(canvas, 'bundle/face.png');
-        eraser.init();
-    }, false);
+    if (isPc) {
+        $('html').addClass('isMdBox');
+    } else {
+        [1, 2, 3, 4].map(function (e, i) {
+            console.log(e, i);
+            var canvas = document.querySelector('#canvas' + e),
+                eraser = new Eraser(canvas, 'bundle/dirty/high5_0' + (e + 1) + '.jpg', $('.bgPos' + e), $('#canvas' + e));
+            eraser.init();
+        });
+    }
 });
+
+function wxShareFn() {
+    var wxShareHref = window.location.href;
+    // cb 是  http://api.home.news.cn/wx/jsapi.do?callback=cb&mpId=375&url=http%3A%2F%2Fwww.xiongan.gov.cn%2F2018-06%2F02%2Fc_129885537.htm 的回调函数, 需要到全局
+
+    window.cbEarthDay2021 = function cbEarthDay2021(data) {
+        // if (data.code !== 200) console.log("shibai");
+        // console.log(data);
+        wx.config({
+            debug: false, // true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: data.content.appId, // 必填，公众号的唯一标识
+            timestamp: data.content.timestamp, // 必填，生成签名的时间戳
+            nonceStr: data.content.nonceStr, // 必填，生成签名的随机串
+            signature: data.content.signature, // 必填，签名，见附录1
+            jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+
+        wx.ready(function () {
+            // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+            // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
+            wx.checkJsApi({
+                jsApiList: ['getNetworkType', 'previewImage']
+                // success: function (res) {
+                //     console.log('res:', res);
+                //     //alert(JSON.stringify(res));
+                // }
+            });
+
+            var shareTit = '世界地球日'; // MAIT_title || $('title').text();
+            var sharesum = '让我们一起守护地球'; // sharesumTxt || 
+            var shareImg = 'http://www.xinhuanet.com/talking/earthday2021/bundle/wxshare.jpg';
+            // const shareUrl = wxShareHref;
+
+            // 2. 分享接口
+            // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
+            wx.onMenuShareAppMessage({
+                title: shareTit,
+                desc: sharesum,
+                link: wxShareHref,
+                imgUrl: shareImg
+            });
+
+            // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
+            wx.onMenuShareTimeline({
+                title: shareTit,
+                link: wxShareHref,
+                imgUrl: shareImg
+            });
+
+            // 2.3 监听“分享到QQ”按钮点击、自定义分享内容及分享结果接口
+            wx.onMenuShareQQ({
+                title: shareTit,
+                desc: sharesum,
+                link: wxShareHref,
+                imgUrl: shareImg
+            });
+
+            // 2.4 监听“分享到微博”按钮点击、自定义分享内容及分享结果接口
+            wx.onMenuShareWeibo({
+                title: shareTit,
+                desc: sharesum,
+                link: wxShareHref,
+                imgUrl: shareImg
+            });
+
+            // 2.5 监听“分享到QZone”按钮点击、自定义分享内容及分享接口
+            wx.onMenuShareQZone({
+                title: shareTit,
+                desc: sharesum,
+                link: wxShareHref,
+                imgUrl: shareImg
+            });
+        });
+
+        // wx.error(function (res) {
+        //     // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+        //     console.log(res, error);
+        // });
+    };
+
+    var tag = document.createElement("script");
+
+    tag.src = function () {
+        var wxShareMpId = 356; //375 = xiongan.gov.cn
+        var url = wxShareHref.substring(0, wxShareHref.indexOf('#') < 0 ? undefined : wxShareHref.indexOf('#'));
+        var weShareCbUrl = 'http://api.home.news.cn/wx/jsapi.do?callback=cbEarthDay2021&mpId=' + wxShareMpId + '&url=' + encodeURIComponent(url);
+
+        console.log('weShareCbUrl:', weShareCbUrl);
+
+        return weShareCbUrl;
+    }();
+
+    document.querySelector("body").appendChild(tag);
+}
+
+wxShareFn();

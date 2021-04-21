@@ -1,5 +1,5 @@
 
-- const title = '2021 Earth Day' + '_新华网'
+- const title = '世界地球日' + '_新华网'
 
 doctype html
 html
@@ -41,24 +41,34 @@ html
                 .topLogo
                 .middleBox
                     .roundTxt 
-                    .cloud 
+                    .cloud
                     .earth 
                     .hand1
                     .hand2
             .tip1
-                //- 
-            .bgPos1
-                canvas#canvas
+                img(src="bundle/tip1.jpg", width="100%" height="auto" alt="")
+                .hand3
+            .bgPos.bgPos1
+                canvas#canvas1
+            .bgPos.bgPos2
+                canvas#canvas2
+            .bgPos.bgPos3
+                canvas#canvas3
+            .bgPos.bgPos4
+                canvas#canvas4
 
             .tip2
-        
+                img(src="bundle/tip2.jpg", width="100%" height="auto" alt="")
 
-                
+        .iframeMdBox
+        .footer
+            a(href="http://news.cn") @news.cn
+             
         script(src='./bundle/jq.js')
         //- script(src='./bundle/swiper.min.js')
         //- script(src='./bundle/swiper.animate.min.js')
         //- script(src='./bundle/TweenMax.min.js')
-        script(src='./bundle/jquery.gsap.min.js')
+        //- script(src='./bundle/jquery.gsap.min.js')
         //- script(src='./bundle/html2canvas.js')
         //- script(src='./bundle/canvas2image.js')
         script(src='./bundle/index.js')
