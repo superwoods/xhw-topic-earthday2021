@@ -325,7 +325,14 @@ canvas {
   background-image: url("clean/high5_05.jpg");
 }
 .tip2 {
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-image: url("tip2.png");
   height: 680px;
+}
+.tip2 img {
+  opacity: 0;
 }
 .bgPos {
   position: relative;
