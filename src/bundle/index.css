@@ -139,7 +139,7 @@ a:hover {
   background-color: #dcf9df;
   background-position: center 0;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: auto 100%;
   background-image: url("bg.png");
   height: 700px;
   position: relative;
@@ -297,7 +297,7 @@ canvas {
   overflow: hidden;
 }
 .tip1 {
-  height: 265px;
+  min-height: 265px;
   position: relative;
 }
 .bgPos1.addBg {
@@ -329,10 +329,12 @@ canvas {
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-image: url("tip2.png");
-  height: 680px;
+  min-height: 680px;
 }
 .tip2 img {
   opacity: 0;
+  width: 100%;
+  height: auto;
 }
 .bgPos {
   position: relative;
